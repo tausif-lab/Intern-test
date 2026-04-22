@@ -15,7 +15,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: 'https://intern-test-ez2k.onrender.com', // Next.js frontend
+    origin: ['https://intern-test-five.vercel.app', 'http://localhost:3000'], 
     credentials: true
 }));
 app.use(express.json());
