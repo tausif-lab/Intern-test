@@ -1,30 +1,53 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { protect, adminOnly } = require('../middleware/authMiddleware');
+const { protect, adminOnly } = require("../middleware/authMiddleware");
 const {
   getAllTasks,
   createTask,
   deleteTask,
   updateTaskStatus,
   getAllUsers,
-} = require('../controllers/taskController');
+} = require("../controllers/taskController");
+const {
+  createTaskValidators,
+  updateTaskStatusValidators,
+  deleteTaskValidators,
+  handleValidationErrors,
+} = require("../utils/validators");
 
-// All routes require authentication
+// ─── All routes require authentication ─────────────────────────────────────
 router.use(protect);
 
-// GET  /api/tasks        → admin: all tasks | user: own tasks
-router.get('/', getAllTasks);
 
-// POST /api/tasks        → admin only: create & assign a task
-router.post('/', adminOnly, createTask);
+router.get("/", getAllTasks);
 
-// DELETE /api/tasks/:id  → admin only
-router.delete('/:id', adminOnly, deleteTask);
 
-// PATCH /api/tasks/:id/status → authenticated user (own tasks) or admin
-router.patch('/:id/status', updateTaskStatus);
+router.post(
+  "/",
+  adminOnly,
+  createTaskValidators,
+  handleValidationErrors,
+  createTask,
+);
 
-// GET /api/users         → admin only: list of regular users
-router.get('/users', adminOnly, getAllUsers);
+
+router.delete(
+  "/:id",
+  adminOnly,
+  deleteTaskValidators,
+  handleValidationErrors,
+  deleteTask,
+);
+
+
+router.patch(
+  "/:id/status",
+  updateTaskStatusValidators,
+  handleValidationErrors,
+  updateTaskStatus,
+);
+
+
+router.get("/users", adminOnly, getAllUsers);
 
 module.exports = router;

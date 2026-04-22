@@ -1,11 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const { connectDB } = require('./config/database');
-const routes = require('./routes');
-const errorHandler = require('./middleware/errorHandler');
-const activityLogger = require('./middleware/activityLogger');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const { connectDB } = require("./config/database");
+const routes = require("./routes");
+const errorHandler = require("./middleware/errorHandler");
+const activityLogger = require("./middleware/activityLogger");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,10 +14,18 @@ const PORT = process.env.PORT || 3001;
 connectDB();
 
 // Middleware
-app.use(cors({
-    origin: ['https://intern-test-five.vercel.app', 'http://localhost:3000'], 
-    credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "https://intern-test-five.vercel.app", // Production
+      "http://localhost:3000", // Frontend dev
+      "http://localhost:3001", // Backend dev
+      "http://127.0.0.1:3000",
+      "http://127.0.0.1:3001",
+    ],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,8 +40,8 @@ app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`API available at: http://localhost:${PORT}/api`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API available at: http://localhost:${PORT}/api`);
 });
 
 module.exports = app;
