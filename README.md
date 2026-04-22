@@ -70,8 +70,10 @@ project/
 │
 │── frontend/
 │   │── app/
-│   │── components/
-│
+│       |-- admin-dashboard/
+│       |-- login/
+|       |-- user-dashboard/
+|       |-- page.tsx
 │── README.md
 ```
 
@@ -91,20 +93,20 @@ cd project
 ### 2. Backend Setup
 
 ```bash
-cd backend
+cd Backend
 npm install
 ```
 
 Create a `.env` file:
 ```
-PORT=5000
+PORT=3001
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_secret_key
 ```
 
 Run backend:
 ```bash
-npm start
+npm run dev
 ```
 
 ---
