@@ -1,10 +1,5 @@
-/**
- * Centralised API helper for the frontend.
- * Automatically attaches the JWT from localStorage and handles 401 redirects.
- */
 
-//const API_BASE = 'https://intern-test-ez2k.onrender.com'; // Production
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3001"; // Development
+const API_BASE = "https://intern-test-ez2k.onrender.com"; // Development
 function getToken(): string | null {
   if (typeof window === "undefined") return null;
   return localStorage.getItem("token");

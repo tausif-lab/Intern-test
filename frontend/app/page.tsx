@@ -29,7 +29,7 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:3001/api/v1/auth/register",
+        "https://intern-test-ez2k.onrender.com/api/v1/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
