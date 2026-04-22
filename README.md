@@ -132,7 +132,7 @@ npm run dev
 
 * GET `/api/v1/tasks` → Get tasks
 * POST `/api/v1/tasks` → Create task (Admin)
-* PUT `/api/v1/tasks/:id` → Update status (User)
+* PUT `/api/v1/tasks/:id/status` → Update status (User)
 * DELETE `/api/v1/tasks/:id` → Delete task (Admin)
 
 ---
@@ -192,7 +192,7 @@ Postman Collection:
 ---
 
 ## 👨‍💻 Author
-
+Tausif Khan
 Built as part of a backend engineering assignment to demonstrate:
 
 * Secure API development
