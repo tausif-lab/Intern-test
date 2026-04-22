@@ -33,7 +33,7 @@ A production-oriented REST API with JWT authentication and role-based access con
 
 * 📄 **API Documentation**
 
-  * Postman collection included
+  * https://documenter.getpostman.com/view/54222821/2sBXqFN32D
 
 ---
 
