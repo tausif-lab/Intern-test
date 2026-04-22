@@ -3,7 +3,7 @@
  * Automatically attaches the JWT from localStorage and handles 401 redirects.
  */
 
-const API_BASE = 'http://localhost:3001';
+const API_BASE = 'https://intern-test-ez2k.onrender.com';
 
 function getToken(): string | null {
   if (typeof window === 'undefined') return null;
